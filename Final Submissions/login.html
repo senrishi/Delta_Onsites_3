@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NITT Landing page</title>
+    </head>
+    <body>
+        <form id="login" method="POST">
+            <p>Hi there! Please enter your roll number and Department to get a secret response.</p>
+            <br>
+            <label for="rollno">Roll Number:</label>
+            <p><input type="number" id="rollno" name="rollno" /></p>
+            <br>
+            <label for="dept">Department:</label>
+            <p><input type="text" id="dept" name="dept" /></p>       
+            <p><input type="submit" value="Submit" /></p> 
+        </form>
+    </body>
+    <script>
+        const form = document.getElementById('login');
+        const department = document.getElementById('dept');
+
+        form.addEventListener('submit', function(event) {
+            const dept = department.value;
+            if (['cse', 'eee', 'ice'].includes(dept)) {
+                form.action = '/' + dept + '/success';
+            } else {
+                event.preventDefault();
+                alert('Try cse, eee or ice');
+            }
+        });
+    </script>
+</html>
